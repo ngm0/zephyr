@@ -1,0 +1,11 @@
+# OpenTitan Cryptographic Accelerator configuration options
+
+# Copyright (c) 2024 Meta Technologies, Inc.
+# SPDX-License-Identifier: Apache-2.0
+
+config CRYPTO_OPENTITAN_AES
+	bool "OpenTitan Cryptographic Accelerator driver"
+	default y
+	depends on DT_HAS_LOWRISC_OPENTITAN_AES_ENABLED
+	help
+	  Enable OpenTitan HAL-based Cryptographic Accelerator driver.

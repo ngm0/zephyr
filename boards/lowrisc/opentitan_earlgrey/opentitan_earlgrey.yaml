@@ -11,4 +11,5 @@ testing:
     - bluetooth
 supported:
   - watchdog
+  - aes
 vendor: lowrisc
