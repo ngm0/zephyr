@@ -70,12 +70,21 @@ in simulated flash. The OpenTitan test ROM will then run in simulation, read
 the manifest header from simulated flash, and begin executing Zephyr from the
 entry point.
 
+Build the required OpenTitan verilator components.
+
+.. code-block:: console
+
+   cd $OT_HOME
+   ./bazelisk.sh build //hw:verilator_real //hw/ip/otp_ctrl/data/..
+
+Launch zephyr.
+
 .. code-block:: console
 
    $OT_HOME/bazel-bin/hw/build.verilator_real/sim-verilator/Vchip_sim_tb --verbose-mem-load \
    -r $OT_HOME/bazel-out/k8-fastbuild-ST-2cc462681f62/bin/sw/device/lib/testing/test_rom/test_rom_sim_verilator.39.scr.vmem \
    --meminit=otp,$OT_HOME/bazel-out/k8-fastbuild/bin/hw/ip/otp_ctrl/data/img_rma.24.vmem \
-   --meminit=flash,$ZEPHYR_PATH/build/zephyr/zephyr.elf
+   --meminit=flash0,$ZEPHYR_PATH/build/zephyr/zephyr.elf
 
 UART output:
 
@@ -95,4 +104,4 @@ References
 
 .. _OpenTitan GitHub: https://github.com/lowRISC/opentitan
 
-.. _OpenTitan Verilator Setup: https://opentitan.org/guides/getting_started/setup_verilator.html
+.. _OpenTitan Verilator Setup: https://opentitan.org/book/doc/getting_started/setup_verilator.html
